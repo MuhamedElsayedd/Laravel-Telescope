@@ -15,13 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Jobs
 Route::get('/jobs', function () {
     $batch = Bus::batch([
         new newJob(),
     ])->dispatch();
 });
 
-
+// Cache
 Route::get('/cache', function () {
     if (Cache::has('key')) {
         return Cache::get('key');
@@ -31,20 +32,22 @@ Route::get('/cache', function () {
     return Cache::get('key');
 });
 
-
+// Dump
 Route::get('/dumps', function () {
     return dump('hello from the dump');
 });
 
+// Events
 Route::get('/event', function () {
     NewEvent::dispatch();
 });
 
+// Exceptions
 Route::get('/exception', function () {
     throw new Exception("this is an exception");
 });
 
-
+// Gates
 Route::get('/gates', function () {
     if (Gate::forUser(Auth::user())->allows('testGate')) {
         return 'you are allowed to take this action';
@@ -52,25 +55,15 @@ Route::get('/gates', function () {
     abort(403);
 });
 
+// HTTP
 Route::get('/http', function () {
     return Http::get('http://example.com');
 });
 
+// Logs
 Route::get('/logs', function () {
     Log::info("hello from the logs info level");;
 });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Route::get('/dashboard', function () {
