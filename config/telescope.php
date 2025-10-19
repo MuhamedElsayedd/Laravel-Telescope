@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'path' => env('TELESCOPE_PATH', 'telescope'),
+    'path' => env('TELESCOPE_PATH', 'mytelescope'),
 
     /*
     |--------------------------------------------------------------------------
@@ -147,7 +147,7 @@ return [
 
         Watchers\CommandWatcher::class => [
             'enabled' => env('TELESCOPE_COMMAND_WATCHER', true),
-            'ignore' => [],
+            'ignore' => ['inspire'],
         ],
 
         Watchers\DumpWatcher::class => [
@@ -173,7 +173,7 @@ return [
 
         Watchers\LogWatcher::class => [
             'enabled' => env('TELESCOPE_LOG_WATCHER', true),
-            'level' => 'error',
+            'level' => 'info',
         ],
 
         Watchers\MailWatcher::class => env('TELESCOPE_MAIL_WATCHER', true),
